@@ -1,0 +1,25 @@
+var express = require("express");
+
+var route = require("./model/route.js");
+var bd = require("body-parser");
+var cookie=require('cookie-parser');
+var app = express();
+app.listen(4000);
+app.use(cookie());
+app.set("view engine","ejs");
+app.use(bd.urlencoded({extender:false}));
+app.use(express.static('./public'));
+app.use(express.static('./touxiang'));
+app.use(express.static('./upload'));
+app.get("/",route.showIndex);
+app.post("/add",route.add);
+app.get("/modify",route.modify);
+app.post("/doUpdate",route.update);
+app.get("/del",route.del);
+app.get("/regist",route.regist);
+app.post("/doRegist",route.doRegist);
+app.post('/login',route.login);
+app.get('/hh',route.tc);
+app.get('/upload',route.upload);
+app.post('/doUpload',route.doupload);
+app.get("/cut",route.cut);

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        fieldset{
+            width: 50%;
+        }
+        p,form{
+            margin-left: 75px;
+        }
+    </style>
+</head>
+<body>
+<h3><a href="/hh">退出登录</a></h3>
+<form action="/add" method="post">
+    <fieldset>
+        <legend>留言</legend>
+        <%for(var i=0;i<users.length;i++){%>
+        <%if(username==users[i].username){%>
+        <a href="/upload"><img src="<%=users[i].pic%>" width="20"></a>
+        <%}%>
+        <%}%>
+      <%=username%><br>
+        留言：<br>
+        <textarea name="msg"></textarea><br>
+        <input type="submit" value="提交">
+    </fieldset>
+</form>
+
+<hr>
+<%for(var i=0;i<msg.length;i++){%>
+<p>
+    <%for(var j=0;j<users.length;j++){%>
+    <%if(msg[i].username==users[j].username){%>
+    <img src="<%=users[j].pic%>" width="20" height="20">
+    <%}%>
+    <%}%>
+    <%=msg[i].username%> 说：<br>
+    <%=msg[i].msg%><br>
+    <%=msg[i].date%><br>
+    <%if(username==msg[i].username){%>
+    <a href="/del?id=<%=msg[i]._id%>">删除</a>&nbsp;<a href="/modify?id=<%=msg[i]._id%>">修改</a>
+    <%}%>
+</p>
+<hr>
+<%}%>
+</body>
+</html>

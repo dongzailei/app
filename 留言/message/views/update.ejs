@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<form action="/doUpdate" method="post">
+    <input type="text" name="id" value="<%=msg[0]._id%>" readonly>
+    姓名：<br>
+    <p><%=msg[0].username%></p>
+    留言：<br>
+    <textarea name="msg"></textarea><br>
+    <input type="submit" value="修改">
+</form>
+</body>
+</html>
